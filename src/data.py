@@ -18,6 +18,8 @@ def read_sentence_data(filename, token_delim=' '):
     for line in f:
       line = line.strip()
       toks = line.split(token_delim)
+
+      # remove all none-like tokens
       toks = list(filter(None, toks))
 
       lines.append(toks)

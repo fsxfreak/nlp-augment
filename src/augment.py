@@ -4,7 +4,6 @@ Reads parallel data, and attempts to substitute words for similar rare words,
 using word2vec similarity.
 
 Warning, will read all files into memory. Best suited for low-data scenarios.
-Leon Cheung, lcheung@isi.edu
 '''
 import argparse, sys, os, time, string
 import logging as log
@@ -110,9 +109,10 @@ def main():
   log.debug('New augment data; %s' % augments_src[:3])
   augments.extend(augments_src)
 
-  augments_trg = build_augments(subs_trg, rares_trg, lines_src, src=False)
-  log.debug('New augment data; %s' % augments_trg[:3])
-  augments.extend(augments_trg)
+  # uncomment to build augmentations including the target side
+  #augments_trg = build_augments(subs_trg, rares_trg, lines_src, src=False)
+  #log.debug('New augment data; %s' % augments_trg[:3])
+  #augments.extend(augments_trg)
 
   write_parallel_data(args.out_src, args.out_trg, augments)
 
